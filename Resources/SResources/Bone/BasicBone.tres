@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BoneResource" format=3 uid="uid://bh7am8ur74hhm"]
+
+[ext_resource type="Script" uid="uid://cckhmj6mnrxpm" path="res://Resources/RScripts/BoneResource.gd" id="1_7v5u2"]
+
+[resource]
+script = ExtResource("1_7v5u2")
+metadata/_custom_type_script = "uid://cckhmj6mnrxpm"

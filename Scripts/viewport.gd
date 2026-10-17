@@ -1,0 +1,13 @@
+class_name ViewWorld
+extends SubViewportContainer
+
+@export var viewport : SubViewport
+@export var world : World_2D
+
+
+func _gui_input(event: InputEvent) -> void:
+	if viewport:
+		viewport.push_input(event)
+
+func get_world() -> World_2D:
+	return world

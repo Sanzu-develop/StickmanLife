@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dfngdjl5d60d6"]
+
+[ext_resource type="Script" uid="uid://dcnia75j22pa3" path="res://Scripts/UIScripts/detail_item.gd" id="1_nj0qy"]
+
+[node name="DetailItem" type="PanelContainer" unique_id=548274818 node_paths=PackedStringArray("property_parent", "property_text")]
+custom_minimum_size = Vector2(128, 64)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nj0qy")
+property_parent = NodePath("MarginContainer/HBoxContainer")
+property_text = NodePath("MarginContainer/HBoxContainer/PropertyText")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1010990349]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=242941046]
+layout_mode = 2
+
+[node name="PropertyText" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1701173964]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Property"

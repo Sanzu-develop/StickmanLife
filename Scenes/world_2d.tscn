@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://dtj6gv37f776i"]
+
+[ext_resource type="Script" uid="uid://b5fxyfu1g8nir" path="res://Scripts/form_manager.gd" id="1_1p8uv"]
+[ext_resource type="Script" uid="uid://cpp00mx8hryw6" path="res://Scripts/SScripts/world_2d.gd" id="1_373vc"]
+[ext_resource type="Script" uid="uid://ba044dwup51pi" path="res://Resources/RScripts/ObjectDraw.gd" id="3_78bgy"]
+[ext_resource type="Script" uid="uid://cckhmj6mnrxpm" path="res://Resources/RScripts/BoneResource.gd" id="3_373vc"]
+[ext_resource type="Script" uid="uid://bies14ldfb4sw" path="res://Resources/RScripts/FormResource.gd" id="5_isaoy"]
+[ext_resource type="Script" uid="uid://3ri4enxyq86b" path="res://Scripts/gizm.gd" id="6_cq40c"]
+[ext_resource type="Script" uid="uid://b5auegv2mxwi1" path="res://Scripts/UIScripts/bones_parent.gd" id="7_78bgy"]
+
+[sub_resource type="Resource" id="Resource_rfr4r"]
+script = ExtResource("3_373vc")
+length = 0.0
+metadata/_custom_type_script = "uid://cckhmj6mnrxpm"
+
+[sub_resource type="Resource" id="Resource_hbssv"]
+script = ExtResource("5_isaoy")
+type = 1
+width = 0.0
+metadata/_custom_type_script = "uid://bies14ldfb4sw"
+
+[sub_resource type="Resource" id="Resource_isaoy"]
+script = ExtResource("3_78bgy")
+data_form = Array[ExtResource("5_isaoy")]([SubResource("Resource_hbssv")])
+data_bone = Array[ExtResource("3_373vc")]([SubResource("Resource_rfr4r")])
+metadata/_custom_type_script = "uid://ba044dwup51pi"
+
+[sub_resource type="Resource" id="Resource_78bgy"]
+script = ExtResource("3_373vc")
+length = 0.0
+metadata/_custom_type_script = "uid://cckhmj6mnrxpm"
+
+[sub_resource type="Resource" id="Resource_r2lu5"]
+script = ExtResource("3_373vc")
+form_id = 1
+local_position = Vector2(0, 50)
+angle = -45.0
+length = 100.0
+metadata/_custom_type_script = "uid://cckhmj6mnrxpm"
+
+[sub_resource type="Resource" id="Resource_cwb1p"]
+script = ExtResource("5_isaoy")
+type = 1
+color = Color(0, 0, 1, 1)
+metadata/_custom_type_script = "uid://bies14ldfb4sw"
+
+[sub_resource type="Resource" id="Resource_wybrd"]
+script = ExtResource("5_isaoy")
+type = 2
+width = 10.0
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://bies14ldfb4sw"
+
+[sub_resource type="Resource" id="Resource_ecms0"]
+script = ExtResource("3_78bgy")
+name = "Lovu"
+data_form = Array[ExtResource("5_isaoy")]([SubResource("Resource_cwb1p"), SubResource("Resource_wybrd")])
+data_bone = Array[ExtResource("3_373vc")]([SubResource("Resource_78bgy"), SubResource("Resource_r2lu5")])
+metadata/_custom_type_script = "uid://ba044dwup51pi"
+
+[sub_resource type="Resource" id="Resource_qpsru"]
+script = ExtResource("3_373vc")
+metadata/_custom_type_script = "uid://cckhmj6mnrxpm"
+
+[sub_resource type="Resource" id="Resource_b0n7y"]
+script = ExtResource("5_isaoy")
+type = 1
+metadata/_custom_type_script = "uid://bies14ldfb4sw"
+
+[sub_resource type="Resource" id="Resource_olyg0"]
+script = ExtResource("3_78bgy")
+data_form = Array[ExtResource("5_isaoy")]([SubResource("Resource_b0n7y")])
+data_bone = Array[ExtResource("3_373vc")]([SubResource("Resource_qpsru")])
+metadata/_custom_type_script = "uid://ba044dwup51pi"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(100, 100)
+
+[node name="World2D" type="Node2D" unique_id=1578310454 node_paths=PackedStringArray("form", "gizm", "bones")]
+script = ExtResource("1_373vc")
+form = NodePath("Form")
+gizm = NodePath("UINode2D/Gizms/Gizm")
+bones = NodePath("UINode2D/Bones")
+
+[node name="Form" type="Node2D" parent="." unique_id=870950982]
+script = ExtResource("1_1p8uv")
+objects = Array[ExtResource("3_78bgy")]([SubResource("Resource_isaoy"), SubResource("Resource_ecms0"), SubResource("Resource_olyg0")])
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2115974103]
+
+[node name="UINode2D" type="Node2D" parent="." unique_id=908130568]
+
+[node name="Gizms" type="Node2D" parent="UINode2D" unique_id=1009588088]
+
+[node name="Gizm" type="Area2D" parent="UINode2D/Gizms" unique_id=1600030930]
+visible = false
+script = ExtResource("6_cq40c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UINode2D/Gizms/Gizm" unique_id=1983525773]
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="Bones" type="Node2D" parent="UINode2D" unique_id=1408884556]
+script = ExtResource("7_78bgy")
+
+[connection signal="object_changed" from="Form" to="." method="_on_form_object_changed"]
+[connection signal="position_changed" from="UINode2D/Gizms/Gizm" to="." method="_on_gizm_position_changed"]

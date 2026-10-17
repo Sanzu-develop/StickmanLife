@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FormResource" format=3 uid="uid://bvngr3ol3cr3h"]
+
+[ext_resource type="Script" uid="uid://bies14ldfb4sw" path="res://Resources/RScripts/FormResource.gd" id="1_x7njt"]
+
+[resource]
+script = ExtResource("1_x7njt")
+type = 2
+control_position = Vector2(25, 25)
+final_position = Vector2(0, 100)
+width = 10.0
+metadata/_custom_type_script = "uid://bies14ldfb4sw"

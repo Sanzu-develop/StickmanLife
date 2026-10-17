@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ObjectDraw" format=3 uid="uid://cq6n1mymnq2xl"]
+
+[ext_resource type="Script" uid="uid://cckhmj6mnrxpm" path="res://Resources/RScripts/BoneResource.gd" id="1_rfr4r"]
+[ext_resource type="Script" uid="uid://bies14ldfb4sw" path="res://Resources/RScripts/FormResource.gd" id="2_hbssv"]
+[ext_resource type="Script" uid="uid://ba044dwup51pi" path="res://Resources/RScripts/ObjectDraw.gd" id="3_3l1md"]
+
+[sub_resource type="Resource" id="Resource_rfr4r"]
+script = ExtResource("1_rfr4r")
+length = 0.0
+metadata/_custom_type_script = "uid://cckhmj6mnrxpm"
+
+[sub_resource type="Resource" id="Resource_hbssv"]
+script = ExtResource("2_hbssv")
+type = 1
+metadata/_custom_type_script = "uid://bies14ldfb4sw"
+
+[resource]
+script = ExtResource("3_3l1md")
+data_form = Array[ExtResource("2_hbssv")]([SubResource("Resource_hbssv")])
+data_bone = Array[ExtResource("1_rfr4r")]([SubResource("Resource_rfr4r")])
+metadata/_custom_type_script = "uid://ba044dwup51pi"
