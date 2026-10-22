@@ -1,18 +1,22 @@
 class_name InspetorEditorProperty
 
 
-static func get_all_property(resource: Resource) -> Dictionary:
-	var data_text : Dictionary = {}
+static func get_all_property(resource: Resource) -> Array[Property]:
+	var properties_list : Array[Property] = []
 	if not resource:
-		return data_text
+		return properties_list
 	
 	for prop in resource.get_property_list():
 		if prop.usage & PROPERTY_USAGE_SCRIPT_VARIABLE:
-			var name = prop.name
-			var value = resource.get(name)
-			data_text[name] = value
-	
-	return data_text
+			var p = Property.new()
+			p.name = prop.name
+			p.value = resource.get(prop.name)
+			p.type = prop.type
+			p.hint = prop.hint
+			p.hint_string = prop.hint_string
+			
+			properties_list.push_back(p)
+	return properties_list
 
 static func set_variable_in_text(resource: Resource, variable_name: String, text_value: String) -> bool:
 	if not resource:

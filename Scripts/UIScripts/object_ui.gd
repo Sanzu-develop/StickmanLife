@@ -1,3 +1,4 @@
+@icon("res://Sprites/UISprites/Icons/ui/components/icon-comp-pencil-ui.png")
 class_name ObjectUI
 extends Panel
 
@@ -8,7 +9,6 @@ signal selected
 @export var image : TextureRect
 @export var text : LineEdit
 
-@export var world : World_2D
 var id : int = 0
 
 
@@ -16,13 +16,14 @@ var id : int = 0
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.pressed:
-			if world.form: world.form.set_object_id(id)
 			selected.emit()
-
-#func 
 
 func set_new_name(new_name: String):
 	if text: text.text = new_name
+
+func select(active: bool):
+	if active: self_modulate = Color(2.0, 2.0, 2.0, 1.0)
+	else: self_modulate = Color(1.0, 1.0, 1.0, 1.0)
 
 func update_style(active: bool):
 	var style = StyleBoxFlat.new()

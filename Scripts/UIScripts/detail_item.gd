@@ -1,45 +1,47 @@
+@icon("res://Sprites/UISprites/Icons/ui/components/icon-comp-wrench-ui.png")
 class_name DetailItemUI
 extends PanelContainer
 
-signal property_changed(property_name: String, new_value: Variant)
+signal property_changed(drawer_type: int, drawer_id: int, property_name: String, new_value: Variant)
 
 @export var property_parent: HBoxContainer
 @export var property_text: Label
 
-var item_resource: Drawer
-var property_name: String = ""
-var property_value: Variant
-var property_type: Variant.Type
+var drawer_type: int
+var property: Property
 var property_control: Control
 
+var id: int = 0
 
-func initialize(new_resource: Drawer, new_name: String, new_value: Variant) -> void:
-	item_resource = new_resource
-	property_name = new_name
-	property_value = new_value
+
+func initialize(type: int, new_id: int, new_property: Property) -> void:
+	drawer_type = type
+	id = new_id
+	property = new_property
 	_update_ui()
 
 func _update_ui() -> void:
 	if property_text:
-		property_text.text = property_name
+		property_text.text = property.name
 
-	var new_type: Variant.Type = typeof(property_value) as Variant.Type
+	var value : Variant = DynamicData.get_control_value(property_control)
+	var type: Variant.Type = typeof(value) as Variant.Type
 
 	# Se o controle não existe ou o tipo do dado mudou, recria o nó de UI
-	if not property_control or property_type != new_type:
-		_recreate_control(new_type)
+	if not property_control or property.type != type:
+		_recreate_control(type)
 	else:
 		# Se o nó já é do tipo correto, apenas atualiza o valor
-		DynamicData.set_control_value(property_control, property_value)
+		DynamicData.set_control_value(property_control, property.value)
 
-func _recreate_control(new_type: Variant.Type) -> void:
+func _recreate_control(type: Variant.Type) -> void:
 	# Remove o controle antigo se ele existir
 	if property_control and is_instance_valid(property_control):
 		ChildManager.erase_child(property_parent, property_control)
 
 	# Atualiza o tipo guardado e cria o novo nó
-	property_type = new_type
-	property_control = DynamicUIFactory.create_control(property_value)
+	property.type = type
+	property_control = DynamicUIFactory.create_control(property.value,property.hint,property.hint_string)
 
 	if property_control:
 		property_control.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -48,9 +50,6 @@ func _recreate_control(new_type: Variant.Type) -> void:
 		DynamicUIFactory.connect_value_changed(property_control,_on_value_modified)
 
 func _on_value_modified(new_value: Variant) -> void:
-	property_value = new_value
+	property.value = new_value
 	
-	if item_resource and not property_name.is_empty():
-		item_resource.set(property_name,property_value)
-	
-	property_changed.emit(property_name,property_value)
+	property_changed.emit(drawer_type, id, property.name, property.value)

@@ -1,3 +1,4 @@
+@icon("res://Sprites/UISprites/Icons/ui/files_data/icon-globe-ui.png")
 class_name ViewWorld
 extends SubViewportContainer
 

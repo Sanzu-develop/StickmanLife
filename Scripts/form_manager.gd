@@ -1,3 +1,4 @@
+@icon("res://Sprites/UISprites/Icons/2d/geometry/icon-geo-butterfly-2d.png")
 class_name FormManager
 extends Node2D
 

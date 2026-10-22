@@ -2,8 +2,11 @@ class_name DynamicUIFactory
 
 
 # Função para criar o controle de UI adequado baseado no valor recebido
-static func create_control(init_value: Variant) -> Control:
+static func create_control(init_value: Variant, property_hint: int = PROPERTY_HINT_NONE, hint_string: String = "") -> Control:
+	
+	
 	var type: Variant.Type = typeof(init_value) as Variant.Type
+	
 	match type:
 		TYPE_BOOL:
 			var check_box = CheckBox.new()
@@ -11,11 +14,17 @@ static func create_control(init_value: Variant) -> Control:
 			return check_box
 			
 		TYPE_INT:
+			
+			if property_hint == PROPERTY_HINT_ENUM or _is_custom_enum(hint_string):
+				return _create_enum_ui(init_value, hint_string)
+			
 			var spin_box = SpinBox.new()
 			spin_box.step = 1
 			spin_box.min_value = -999999
 			spin_box.max_value = 999999
 			spin_box.value = init_value
+			spin_box.allow_greater = true
+			spin_box.allow_lesser = true
 			return spin_box
 			
 		TYPE_FLOAT:
@@ -24,6 +33,8 @@ static func create_control(init_value: Variant) -> Control:
 			spin_box.min_value = -999999.0
 			spin_box.max_value = 999999.0
 			spin_box.value = init_value
+			spin_box.allow_greater = true
+			spin_box.allow_lesser = true
 			return spin_box
 			
 		TYPE_STRING, TYPE_STRING_NAME:
@@ -47,6 +58,31 @@ static func create_control(init_value: Variant) -> Control:
 			line_edit.editable = false
 			return line_edit
 
+static func _create_enum_ui(init_value: int, hint_string: String) -> OptionButton:
+	var option_button = OptionButton.new()
+	
+	# O hint_string de um enum na Godot costuma vir formatado como: "Line:0,Circle:1,Curve:2" ou apenas "Line,Circle,Curve"
+	var items = hint_string.split(",")
+	for item in items:
+		var parts = item.split(":")
+		var texto_label = parts[0].strip_edges()
+		var valor_item = int(parts[1]) if parts.size() > 1 else option_button.item_count
+		
+		option_button.add_item(texto_label, valor_item)
+	
+	# Seleciona o item correspondente ao valor atual
+	for i in range(option_button.item_count):
+		if option_button.get_item_id(i) == init_value:
+			option_button.select(i)
+			break
+			
+	return option_button
+
+# Função auxiliar opcional para validar se é um enum customizado
+static func _is_custom_enum(hint_string: String) -> bool:
+	# Se você passar uma string com os nomes das opções do seu enum customizado
+	return not hint_string.is_empty() and not hint_string.begins_with("res://")
+
 static func _create_vector2_ui(vetor) -> HBoxContainer:
 	var container = HBoxContainer.new()
 	var spin_x = SpinBox.new()
@@ -54,8 +90,13 @@ static func _create_vector2_ui(vetor) -> HBoxContainer:
 	
 	spin_x.min_value = -999999
 	spin_x.max_value = 999999
+	spin_x.allow_greater = true
+	spin_x.allow_lesser = true
+	
 	spin_y.min_value = -999999
 	spin_y.max_value = 999999
+	spin_x.allow_greater = true
+	spin_x.allow_lesser = true
 	
 	spin_x.value = vetor.x
 	spin_y.value = vetor.y
@@ -87,6 +128,9 @@ static func connect_value_changed(control: Control, callback: Callable) -> void:
 	elif control is ColorPickerButton:
 		# ColorPickerButton emite color_changed(color: Color)
 		control.color_changed.connect(func(val: Color): callback.call(val))
+
+	elif control is OptionButton:
+		control.item_selected.connect(func(id: int): callback.call(id))
 
 	elif control is HBoxContainer:
 		# Caso especial: Vector2 (Container com 2 SpinBoxes)

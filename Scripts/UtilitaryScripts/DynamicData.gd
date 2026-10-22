@@ -1,6 +1,7 @@
 class_name DynamicData
 
 static func get_control_value(node: Control, standart_value: Variant = null) -> Variant:
+	if not node: return standart_value
 	match true:
 		_ when "value" in node:
 			return node.value

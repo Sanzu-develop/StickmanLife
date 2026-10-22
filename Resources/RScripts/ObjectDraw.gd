@@ -25,5 +25,18 @@ func get_bone(id: int) -> BoneResource:
 	if id < 0 or id >= data_bone.size(): return
 	return data_bone[id]
 
+func set_property_form(form_id: int, property_name: String, new_value: Variant):
+	var form = get_form(form_id)
+	if not form: return
+	form.set(property_name,new_value)
+	_atualize()
+
+func set_property_bone(bone_id: int, property_name: String, new_value: Variant):
+	var bone = get_bone(bone_id)
+	if not bone: return
+	bone.set(property_name,new_value)
+	Log.register_log("Objeto atualizado!")
+	_atualize()
+
 func _atualize():
 	object_changed.emit()

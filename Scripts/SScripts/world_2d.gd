@@ -1,3 +1,4 @@
+@icon("res://Sprites/UISprites/Icons/2d/files_data/icon-globe-2d.png")
 class_name World_2D
 extends Node2D
 
@@ -12,9 +13,11 @@ func child_pressed(active: bool, node: Node2D) -> void:
 		gizm.node_pressed(active,node)
 
 func atualize_bone() -> void:
+	return
 	if bones: bones.organize_childs()
 
 func atualize_bones_property() -> void:
+	return
 	bones.atualize_bones()
 
 func _on_form_object_changed() -> void:

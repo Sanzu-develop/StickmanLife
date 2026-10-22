@@ -1,3 +1,4 @@
+@icon("res://Sprites/UISprites/Icons/2d/arrows/icon-arrow-cardinal-2d.png")
 class_name Gizm
 extends Area2D
 

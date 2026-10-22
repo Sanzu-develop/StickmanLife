@@ -1,3 +1,4 @@
+@icon("res://Sprites/UISprites/Icons/2d/geometry/icon-geo-circle-2d.png")
 class_name BoneManager
 extends Node2D
 

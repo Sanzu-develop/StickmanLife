@@ -1,3 +1,4 @@
+@icon("res://Sprites/UISprites/Icons/ui/science-tech/icon-film-strip-ui.png")
 class_name FFmpeg
 extends Control
 

@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dcnia75j22pa3" path="res://Scripts/UIScripts/detail_item.gd" id="1_nj0qy"]
 
+[sub_resource type="Theme" id="Theme_uhysk"]
+default_font_size = 24
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 8
+MarginContainer/constants/margin_right = 8
+MarginContainer/constants/margin_top = 8
+
 [node name="DetailItem" type="PanelContainer" unique_id=548274818 node_paths=PackedStringArray("property_parent", "property_text")]
 custom_minimum_size = Vector2(128, 64)
 anchors_preset = 8
@@ -15,6 +22,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_uhysk")
 script = ExtResource("1_nj0qy")
 property_parent = NodePath("MarginContainer/HBoxContainer")
 property_text = NodePath("MarginContainer/HBoxContainer/PropertyText")
