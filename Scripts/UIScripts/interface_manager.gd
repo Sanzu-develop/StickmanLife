@@ -77,3 +77,19 @@ func property_atualize(drawer_type: int, drawer_id: int, property_name: String, 
 		object_draw.set_property_form(drawer_id, property_name, new_value)
 	elif drawer_type == 2:
 		object_draw.set_property_bone(drawer_id, property_name, new_value)
+
+
+func create_drawer(type: int):
+	var drawer = Drawer.create_drawer(type)
+	if not drawer: return
+	
+	if type == 1 or type == 2:
+		var draw_data = get_draw_data()
+		
+		draw_data.add_data(drawer)
+		
+		details_bar.atualize()
+	elif type == 0:
+		var form = get_form_manager()
+		
+		form.add_object(drawer)

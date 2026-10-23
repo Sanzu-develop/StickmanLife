@@ -246,12 +246,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Details" type="MarginContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options" unique_id=1473817777 node_paths=PackedStringArray("manager", "form_item_parent", "bone_item_parent", "form_object_parent", "bone_object_parent")]
+[node name="Details" type="MarginContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options" unique_id=1473817777 node_paths=PackedStringArray("manager", "form_item_parent", "form_item_add", "bone_item_parent", "bone_item_add", "form_object_parent", "bone_object_parent")]
 layout_mode = 2
 script = ExtResource("6_v847o")
 manager = NodePath("../../../../../../..")
 form_item_parent = NodePath("DetaisSeparate/FormsScroll/FormPropertys")
+form_item_add = NodePath("DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll/ObjectListSeparate/Add")
 bone_item_parent = NodePath("DetaisSeparate/BonesScroll/BonePropertys")
+bone_item_add = NodePath("DetaisSeparate/BonesScroll/BonePropertys/ObjectListScroll/ObjectListSeparate/Add")
 form_object_parent = NodePath("DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll/ObjectListSeparate")
 bone_object_parent = NodePath("DetaisSeparate/BonesScroll/BonePropertys/ObjectListScroll/ObjectListSeparate")
 packed_detail_item = ExtResource("6_fwvdd")
@@ -284,6 +286,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Add" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll/ObjectListSeparate" unique_id=1606647362 instance=ExtResource("8_a550x")]
+layout_mode = 2
+text = ""
+icon = ExtResource("3_fat6c")
+icon_alignment = 1
+expand_icon = true
+
 [node name="Form&BoneSeparator" type="HSeparator" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1128953869]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
@@ -311,5 +320,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Add" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll/BonePropertys/ObjectListScroll/ObjectListSeparate" unique_id=2006073217 instance=ExtResource("8_a550x")]
+layout_mode = 2
+text = ""
+icon = ExtResource("3_fat6c")
+icon_alignment = 1
+expand_icon = true
+
 [connection signal="object_selected" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects" to="." method="selected_draw_object"]
+[connection signal="create_drawer" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="create_drawer"]
 [connection signal="property_atualize" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="property_atualize"]

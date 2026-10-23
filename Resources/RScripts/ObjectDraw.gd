@@ -35,7 +35,17 @@ func set_property_bone(bone_id: int, property_name: String, new_value: Variant):
 	var bone = get_bone(bone_id)
 	if not bone: return
 	bone.set(property_name,new_value)
-	Log.register_log("Objeto atualizado!")
+	_atualize()
+
+func add_data(data: Drawer):
+	if not data: return
+	var type_data = Drawer.get_id_type(data)
+	if type_data == 1:
+		data_form.push_back(data)
+	elif type_data == 2:
+		data_bone.push_back(data)
+	else: return
+	
 	_atualize()
 
 func _atualize():

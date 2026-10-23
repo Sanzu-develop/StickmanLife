@@ -17,9 +17,13 @@ func _draw() -> void:
 		var data_bone = data_draw.data_bone
 		var data_form = data_draw.data_form
 		for bone in data_bone:
-			if not bone or bone.form_id < 0 or bone.form_id >= data_form.size():
+			var form_id = bone.get("form_id")
+			if form_id == null: continue
+			
+			if not bone or form_id < 0 or form_id >= data_form.size():
 				continue
-			var form = data_form[bone.form_id]
+			
+			var form = data_form[form_id]
 			if not form: continue
 			
 			var trans = Transform2D(bone.get_global_angle(), bone.get_start_position())
@@ -73,3 +77,7 @@ func set_object_id(new_id: int):
 		object_id = new_id
 		if owner is World_2D:
 			owner.atualize_bone()
+
+func add_object(object: ObjectDraw):
+	objects.push_back(object)
+	queue_redraw()
