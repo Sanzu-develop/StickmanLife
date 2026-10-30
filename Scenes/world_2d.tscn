@@ -2,30 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b5fxyfu1g8nir" path="res://Scripts/form_manager.gd" id="1_1p8uv"]
 [ext_resource type="Script" uid="uid://cpp00mx8hryw6" path="res://Scripts/SScripts/world_2d.gd" id="1_373vc"]
-[ext_resource type="Script" uid="uid://ba044dwup51pi" path="res://Resources/RScripts/ObjectDraw.gd" id="3_78bgy"]
-[ext_resource type="Script" uid="uid://cckhmj6mnrxpm" path="res://Resources/RScripts/BoneResource.gd" id="3_373vc"]
-[ext_resource type="Script" uid="uid://bies14ldfb4sw" path="res://Resources/RScripts/FormResource.gd" id="5_isaoy"]
 [ext_resource type="Script" uid="uid://3ri4enxyq86b" path="res://Scripts/gizm.gd" id="6_cq40c"]
 [ext_resource type="Script" uid="uid://b5auegv2mxwi1" path="res://Scripts/UIScripts/bones_parent.gd" id="7_78bgy"]
-
-[sub_resource type="Resource" id="Resource_78bgy"]
-script = ExtResource("3_373vc")
-metadata/_custom_type_script = "uid://cckhmj6mnrxpm"
-
-[sub_resource type="Resource" id="Resource_ecms0"]
-script = ExtResource("3_373vc")
-metadata/_custom_type_script = "uid://cckhmj6mnrxpm"
-
-[sub_resource type="Resource" id="Resource_isaoy"]
-script = ExtResource("5_isaoy")
-width = 10.0
-metadata/_custom_type_script = "uid://bies14ldfb4sw"
-
-[sub_resource type="Resource" id="Resource_cwb1p"]
-script = ExtResource("3_78bgy")
-data_form = Array[ExtResource("5_isaoy")]([SubResource("Resource_isaoy")])
-data_bone = Array[ExtResource("3_373vc")]([SubResource("Resource_78bgy"), SubResource("Resource_ecms0")])
-metadata/_custom_type_script = "uid://ba044dwup51pi"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
 size = Vector2(100, 100)
@@ -38,7 +16,6 @@ bones = NodePath("UINode2D/Bones")
 
 [node name="Form" type="Node2D" parent="." unique_id=870950982]
 script = ExtResource("1_1p8uv")
-objects = Array[ExtResource("3_78bgy")]([SubResource("Resource_cwb1p")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2115974103]
 

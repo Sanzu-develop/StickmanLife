@@ -14,6 +14,12 @@ extends Control
 @export var viewport_world: ViewWorld
 
 
+const MAIN_STRING_PATH = "res://Scenes/InterfaceMain.tscn"
+
+var project: Project
+var project_manager: ProjectManager
+
+
 
 #==================================================================
 # LIFE CICLE
@@ -21,9 +27,24 @@ extends Control
 
 
 func _ready() -> void:
+	project = ProjectManager.get_project()
+	
+	if not project or project == null: 
+		Log.register_log(get_tree().change_scene_to_file(MAIN_STRING_PATH))
+		return
+	
+	world.form.set_object_list(project.get_object_list())
 	objects_bar.atualize()
 	details_bar.atualize()
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("save"):
+		if project and project_manager:
+			project.set_objects_in_form(world.form)
+			ProjectManager.save_project_manager(project_manager)
+	if event.is_action_pressed("exit"):
+		Log.register_log(get_tree().change_scene_to_file(MAIN_STRING_PATH))
 
 #==================================================================
 # WORLD
@@ -85,6 +106,7 @@ func create_drawer(type: int):
 	
 	if type == 1 or type == 2:
 		var draw_data = get_draw_data()
+		if not draw_data: return
 		
 		draw_data.add_data(drawer)
 		
@@ -93,3 +115,4 @@ func create_drawer(type: int):
 		var form = get_form_manager()
 		
 		form.add_object(drawer)
+		objects_bar.atualize()

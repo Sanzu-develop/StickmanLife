@@ -40,15 +40,16 @@ func atualize():
 
 # Atualiza os botões de alternancia entre os ossos/formas
 func atualize_object_nodes():
-	var draw_object = manager.get_draw_data()
-
-	_atualize_form_objects(draw_object.data_form)
-	_atualize_bone_objects(draw_object.data_bone)
-	
 	if not form_item_add.pressed.is_connected(_on_add_item.bind(1)):
 		form_item_add.pressed.connect(_on_add_item.bind(1))
 	if not bone_item_add.pressed.is_connected(_on_add_item.bind(2)):
 		bone_item_add.pressed.connect(_on_add_item.bind(2))
+
+	var draw_object = manager.get_draw_data()
+	if not draw_object: return
+
+	_atualize_form_objects(draw_object.data_form)
+	_atualize_bone_objects(draw_object.data_bone)
 #-----
 
 func _atualize_form_objects(form_list: Array[FormResource]):
@@ -91,6 +92,8 @@ func _atualize_bone_objects(bone_list: Array[BoneResource]):
 # Atualiza os botões de modificação de propriedade
 func atualize_property_nodes():
 	var draw_object = manager.get_draw_data()
+	if not draw_object: return
+	
 	_atualize_form_propertys(draw_object.get_form(form_id))
 	_atualize_bone_propertys(draw_object.get_bone(bone_id))
 #-----

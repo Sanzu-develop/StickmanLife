@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://xc8m7mlq6rbm" path="res://Scripts/viewport.gd" id="1_dmjw6"]
 [ext_resource type="PackedScene" uid="uid://dtj6gv37f776i" path="res://Scenes/world_2d.tscn" id="1_l03w2"]
+[ext_resource type="Theme" uid="uid://4dw8iqnlaaop" path="res://Themes/Interface.tres" id="1_xwj7y"]
 [ext_resource type="Script" uid="uid://lasrk5t54omd" path="res://Scripts/UIScripts/interface_manager.gd" id="2_akntn"]
 [ext_resource type="Texture2D" uid="uid://c6vv4dq8gmjsv" path="res://Sprites/UISprites/Add.png" id="3_fat6c"]
 [ext_resource type="Texture2D" uid="uid://d0gwv3f6mth8e" path="res://Sprites/Logo/Logo.png" id="3_rfl8h"]
@@ -9,19 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://1qt841q65hvd" path="res://Scenes/UIScenesItens/object_ui.tscn" id="4_3c4b8"]
 [ext_resource type="PackedScene" uid="uid://dfngdjl5d60d6" path="res://Scenes/UIScenesItens/detail_item.tscn" id="6_fwvdd"]
 [ext_resource type="Script" uid="uid://ctbdqawtho8cm" path="res://Scripts/UIScripts/details_bar.gd" id="6_v847o"]
+[ext_resource type="Script" uid="uid://cl2u7wg3dfs1c" path="res://Scripts/UIScripts/right_panel.gd" id="7_akntn"]
 [ext_resource type="PackedScene" uid="uid://ct38kv71pmihy" path="res://Scenes/UIScenesItens/item_button.tscn" id="8_a550x"]
 [ext_resource type="Script" uid="uid://bioplfo5ytpcu" path="res://addons/ffmpeg/ffmpeg_manager.gd" id="11_5igdx"]
-
-[sub_resource type="Theme" id="Theme_5igdx"]
-default_font_size = 24
-
-[sub_resource type="Gradient" id="Gradient_ot0vs"]
-colors = PackedColorArray(0.16445974, 0.16445976, 0.16445974, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5igdx"]
-gradient = SubResource("Gradient_ot0vs")
-fill_from = Vector2(0.5, 0.65)
-fill_to = Vector2(0.5, 1)
 
 [sub_resource type="Theme" id="Theme_fat6c"]
 MarginContainer/constants/margin_bottom = 32
@@ -37,22 +28,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme_5igdx")
+theme = ExtResource("1_xwj7y")
 script = ExtResource("2_akntn")
 objects_bar = NodePath("CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects")
 details_bar = NodePath("CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details")
 world = NodePath("CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport/SubViewport/World2D")
 viewport_world = NodePath("CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport")
 
-[node name="BackGround" type="TextureRect" parent="." unique_id=1487659593]
+[node name="BackGround" type="ColorRect" parent="." unique_id=1296942174]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_5igdx")
-expand_mode = 1
+color = Color(0.09411765, 0.09803922, 0.10980392, 1)
 
 [node name="TopUI" type="VBoxContainer" parent="." unique_id=2047921232]
 layout_mode = 1
@@ -150,7 +140,7 @@ world = NodePath("SubViewport/World2D")
 [node name="SubViewport" type="SubViewport" parent="CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport" unique_id=1419293629]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(1468, 942)
+size = Vector2i(1420, 907)
 render_target_update_mode = 4
 
 [node name="World2D" parent="CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport/SubViewport" unique_id=1578310454 instance=ExtResource("1_l03w2")]
@@ -206,8 +196,10 @@ layout_mode = 2
 
 [node name="RightPanel" type="Panel" parent="CenterUI/CenterDivision" unique_id=113932833]
 custom_minimum_size = Vector2(448, 0)
+custom_maximum_size = Vector2(576, -1)
 layout_mode = 2
 theme = SubResource("Theme_fat6c")
+script = ExtResource("7_akntn")
 
 [node name="Margin" type="MarginContainer" parent="CenterUI/CenterDivision/RightPanel" unique_id=1363215949]
 layout_mode = 1
@@ -245,6 +237,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Add" type="Button" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects/ObjectContainer" unique_id=1408514613]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+text = "Add Draw Object"
+icon = ExtResource("3_fat6c")
+expand_icon = true
 
 [node name="Details" type="MarginContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options" unique_id=1473817777 node_paths=PackedStringArray("manager", "form_item_parent", "form_item_add", "bone_item_parent", "bone_item_add", "form_object_parent", "bone_object_parent")]
 layout_mode = 2
@@ -328,5 +327,6 @@ icon_alignment = 1
 expand_icon = true
 
 [connection signal="object_selected" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects" to="." method="selected_draw_object"]
+[connection signal="pressed" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects/ObjectContainer/Add" to="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects" method="_on_add_pressed"]
 [connection signal="create_drawer" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="create_drawer"]
 [connection signal="property_atualize" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="property_atualize"]

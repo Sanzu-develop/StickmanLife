@@ -17,11 +17,11 @@ func _draw() -> void:
 		var data_bone = data_draw.data_bone
 		var data_form = data_draw.data_form
 		for bone in data_bone:
+			if not bone or bone.form_id < 0 or bone.form_id >= data_form.size():
+				continue
+			
 			var form_id = bone.get("form_id")
 			if form_id == null: continue
-			
-			if not bone or form_id < 0 or form_id >= data_form.size():
-				continue
 			
 			var form = data_form[form_id]
 			if not form: continue
@@ -63,6 +63,10 @@ func get_draw_data(id: int = object_id) -> ObjectDraw:
 func get_draw_list() -> Array[ObjectDraw]:
 	return objects
 
+func atualize():
+	_atualize_signal()
+	_atualize_objects()
+
 func _atualize_signal():
 	for object_draw in objects:
 		object_draw.initiate()
@@ -78,6 +82,11 @@ func set_object_id(new_id: int):
 		if owner is World_2D:
 			owner.atualize_bone()
 
+func set_object_list(new_object_list: Array[ObjectDraw]):
+	objects = new_object_list
+	atualize()
+
 func add_object(object: ObjectDraw):
 	objects.push_back(object)
-	queue_redraw()
+	
+	_atualize_signal()
