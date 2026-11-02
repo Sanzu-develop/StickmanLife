@@ -47,6 +47,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_mpnxc")
 Button/styles/pressed = SubResource("StyleBoxFlat_eb8ek")
 GridContainer/constants/h_separation = 32
 GridContainer/constants/v_separation = 32
+HBoxContainer/constants/separation = 12
 MarginContainer/constants/margin_bottom = 24
 MarginContainer/constants/margin_left = 24
 MarginContainer/constants/margin_right = 24

@@ -30,10 +30,10 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("1_xwj7y")
 script = ExtResource("2_akntn")
-objects_bar = NodePath("CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects")
-details_bar = NodePath("CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details")
-world = NodePath("CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport/SubViewport/World2D")
-viewport_world = NodePath("CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport")
+objects_bar = NodePath("MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Objects")
+details_bar = NodePath("MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details")
+world = NodePath("MarginInterface/InterfaceSeparator/CenterDivision/Viewport/MarginContainer/EditorViewport/SubViewport/World2D")
+viewport_world = NodePath("MarginInterface/InterfaceSeparator/CenterDivision/Viewport/MarginContainer/EditorViewport")
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=1296942174]
 layout_mode = 1
@@ -44,64 +44,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.09411765, 0.09803922, 0.10980392, 1)
 
-[node name="TopUI" type="VBoxContainer" parent="." unique_id=2047921232]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-
-[node name="TopPanel" type="Panel" parent="TopUI" unique_id=497429578]
-custom_minimum_size = Vector2(0, 96)
-layout_mode = 2
-
-[node name="MarginTop" type="MarginContainer" parent="TopUI/TopPanel" unique_id=639785469]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="Hbox" type="HBoxContainer" parent="TopUI/TopPanel/MarginTop" unique_id=167141556]
-layout_mode = 2
-alignment = 1
-
-[node name="BeginBox" type="HBoxContainer" parent="TopUI/TopPanel/MarginTop/Hbox" unique_id=624875218]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="IconApp" type="TextureRect" parent="TopUI/TopPanel/MarginTop/Hbox/BeginBox" unique_id=1689002201]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-texture = ExtResource("3_rfl8h")
-expand_mode = 1
-stretch_mode = 4
-
-[node name="NameApp" type="Label" parent="TopUI/TopPanel/MarginTop/Hbox/BeginBox" unique_id=1025960198]
-layout_mode = 2
-text = "Stickman Life"
-horizontal_alignment = 1
-
-[node name="CenterBox" type="HBoxContainer" parent="TopUI/TopPanel/MarginTop/Hbox" unique_id=518258718]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="EndBox" type="HBoxContainer" parent="TopUI/TopPanel/MarginTop/Hbox" unique_id=644379811]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="InteractTop" type="MarginContainer" parent="TopUI" unique_id=1946142290]
-layout_mode = 2
-theme_override_constants/margin_right = 256
-
-[node name="ButtonInteract" type="HBoxContainer" parent="TopUI/InteractTop" unique_id=745705659]
-layout_mode = 2
-
 [node name="CenterUI" type="MarginContainer" parent="." unique_id=120053169]
 layout_mode = 1
 anchors_preset = 15
@@ -111,97 +53,146 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 96
 
-[node name="CenterDivision" type="HBoxContainer" parent="CenterUI" unique_id=1903850326]
-unique_name_in_owner = true
-layout_mode = 2
-alignment = 2
-
-[node name="CenterUI" type="TabContainer" parent="CenterUI/CenterDivision" unique_id=23031171]
-layout_mode = 2
-size_flags_horizontal = 3
-current_tab = 0
-
-[node name="Viewport" type="Panel" parent="CenterUI/CenterDivision/CenterUI" unique_id=2131299866]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="EditorViewport" type="SubViewportContainer" parent="CenterUI/CenterDivision/CenterUI/Viewport" unique_id=1625048620 node_paths=PackedStringArray("viewport", "world")]
+[node name="MarginInterface" type="MarginContainer" parent="." unique_id=1302999853]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="InterfaceSeparator" type="VBoxContainer" parent="MarginInterface" unique_id=2047921232]
+layout_mode = 2
+
+[node name="TopPanel" type="Panel" parent="MarginInterface/InterfaceSeparator" unique_id=497429578]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+
+[node name="MarginTop" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/TopPanel" unique_id=639785469]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hbox" type="HBoxContainer" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop" unique_id=167141556]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="BeginBox" type="HBoxContainer" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox" unique_id=624875218]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="IconApp" type="TextureRect" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox/BeginBox" unique_id=1689002201]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("3_rfl8h")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="NameApp" type="Label" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox/BeginBox" unique_id=1025960198]
+layout_mode = 2
+text = "Stickman Life "
+horizontal_alignment = 1
+
+[node name="Archive" type="Button" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox/BeginBox" unique_id=2136988450]
+layout_mode = 2
+text = " Arquivos "
+
+[node name="Edit" type="Button" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox/BeginBox" unique_id=1408260982]
+layout_mode = 2
+text = " Editar "
+
+[node name="Render" type="Button" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox/BeginBox" unique_id=1476878685]
+layout_mode = 2
+text = " Render "
+
+[node name="CenterTab" type="TabBar" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox" unique_id=647118563]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 1
+clip_tabs = false
+tab_count = 4
+tab_0/title = "Desenho"
+tab_1/title = "Animação"
+tab_2/title = "RIgging"
+tab_3/title = "Graph Edit"
+
+[node name="End" type="Control" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox" unique_id=1970891175]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EndLabel" type="Label" parent="MarginInterface/InterfaceSeparator/TopPanel/MarginTop/Hbox/End" unique_id=1223549959]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -394.0
+offset_top = -22.5
+offset_bottom = 22.5
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 3
+text = "FPS: 60 | Memory: 142MB"
+
+[node name="CenterDivision" type="HBoxContainer" parent="MarginInterface/InterfaceSeparator" unique_id=1903850326]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="LeftPanel" type="Panel" parent="MarginInterface/InterfaceSeparator/CenterDivision" unique_id=1930804782]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/LeftPanel" unique_id=415613388]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Viewport" type="Panel" parent="MarginInterface/InterfaceSeparator/CenterDivision" unique_id=2131299866]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/Viewport" unique_id=1032425633]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EditorViewport" type="SubViewportContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/Viewport/MarginContainer" unique_id=1625048620 node_paths=PackedStringArray("viewport", "world")]
+layout_mode = 2
 stretch = true
 script = ExtResource("1_dmjw6")
 viewport = NodePath("SubViewport")
 world = NodePath("SubViewport/World2D")
 
-[node name="SubViewport" type="SubViewport" parent="CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport" unique_id=1419293629]
+[node name="SubViewport" type="SubViewport" parent="MarginInterface/InterfaceSeparator/CenterDivision/Viewport/MarginContainer/EditorViewport" unique_id=1419293629]
 handle_input_locally = false
 physics_object_picking = true
-size = Vector2i(1420, 907)
+size = Vector2i(1224, 872)
 render_target_update_mode = 4
 
-[node name="World2D" parent="CenterUI/CenterDivision/CenterUI/Viewport/EditorViewport/SubViewport" unique_id=1578310454 instance=ExtResource("1_l03w2")]
+[node name="World2D" parent="MarginInterface/InterfaceSeparator/CenterDivision/Viewport/MarginContainer/EditorViewport/SubViewport" unique_id=1578310454 instance=ExtResource("1_l03w2")]
 
-[node name="LeftUI2" type="MarginContainer" parent="CenterUI/CenterDivision/CenterUI/Viewport" unique_id=541673458]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 128.0
-grow_vertical = 2
-
-[node name="Buttons" type="VBoxContainer" parent="CenterUI/CenterDivision/CenterUI/Viewport/LeftUI2" unique_id=1778285904]
-layout_mode = 2
-alignment = 1
-
-[node name="Add" type="Button" parent="CenterUI/CenterDivision/CenterUI/Viewport/LeftUI2/Buttons" unique_id=134235206]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-icon = ExtResource("3_fat6c")
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="Video" type="Control" parent="CenterUI/CenterDivision/CenterUI" unique_id=1154516030]
-visible = false
-layout_mode = 2
-script = ExtResource("11_5igdx")
-metadata/_custom_type_script = "uid://bioplfo5ytpcu"
-metadata/_tab_index = 1
-
-[node name="Panel" type="Panel" parent="CenterUI/CenterDivision/CenterUI/Video" unique_id=439963012]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Margin" type="MarginContainer" parent="CenterUI/CenterDivision/CenterUI/Video/Panel" unique_id=1760138493]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterUI/CenterDivision/CenterUI/Video/Panel/Margin" unique_id=1581206210]
-layout_mode = 2
-
-[node name="RightPanel" type="Panel" parent="CenterUI/CenterDivision" unique_id=113932833]
+[node name="RightPanel" type="Panel" parent="MarginInterface/InterfaceSeparator/CenterDivision" unique_id=113932833 node_paths=PackedStringArray("tree")]
 custom_minimum_size = Vector2(448, 0)
 custom_maximum_size = Vector2(576, -1)
 layout_mode = 2
 theme = SubResource("Theme_fat6c")
 script = ExtResource("7_akntn")
+tree = NodePath("Margin/Tree")
 
-[node name="Margin" type="MarginContainer" parent="CenterUI/CenterDivision/RightPanel" unique_id=1363215949]
+[node name="Margin" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel" unique_id=1363215949]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,42 +204,43 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="List" type="VBoxContainer" parent="CenterUI/CenterDivision/RightPanel/Margin" unique_id=743195367]
+[node name="List" type="VBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin" unique_id=743195367]
+visible = false
 layout_mode = 2
 
-[node name="Options" type="TabContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List" unique_id=935045929]
+[node name="Options" type="TabContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List" unique_id=935045929]
 layout_mode = 2
 size_flags_vertical = 3
 current_tab = 1
 
-[node name="Objects" type="MarginContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options" unique_id=1407822021 node_paths=PackedStringArray("manager", "object_container")]
+[node name="Objects" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options" unique_id=1407822021 node_paths=PackedStringArray("manager", "object_container")]
 visible = false
 layout_mode = 2
 script = ExtResource("3_xcca6")
-manager = NodePath("../../../../../../..")
+manager = NodePath("../../../../../../../..")
 object_container = NodePath("ScrollObjects/ObjectContainer")
 object_ui = ExtResource("4_3c4b8")
 metadata/_tab_index = 0
 
-[node name="ScrollObjects" type="ScrollContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects" unique_id=1756994568]
+[node name="ScrollObjects" type="ScrollContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Objects" unique_id=1756994568]
 layout_mode = 2
 
-[node name="ObjectContainer" type="VBoxContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects" unique_id=178912396]
+[node name="ObjectContainer" type="VBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects" unique_id=178912396]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Add" type="Button" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects/ObjectContainer" unique_id=1408514613]
+[node name="Add" type="Button" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects/ObjectContainer" unique_id=1408514613]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 text = "Add Draw Object"
 icon = ExtResource("3_fat6c")
 expand_icon = true
 
-[node name="Details" type="MarginContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options" unique_id=1473817777 node_paths=PackedStringArray("manager", "form_item_parent", "form_item_add", "bone_item_parent", "bone_item_add", "form_object_parent", "bone_object_parent")]
+[node name="Details" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options" unique_id=1473817777 node_paths=PackedStringArray("manager", "form_item_parent", "form_item_add", "bone_item_parent", "bone_item_add", "form_object_parent", "bone_object_parent")]
 layout_mode = 2
 script = ExtResource("6_v847o")
-manager = NodePath("../../../../../../..")
+manager = NodePath("../../../../../../../..")
 form_item_parent = NodePath("DetaisSeparate/FormsScroll/FormPropertys")
 form_item_add = NodePath("DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll/ObjectListSeparate/Add")
 bone_item_parent = NodePath("DetaisSeparate/BonesScroll/BonePropertys")
@@ -259,74 +251,115 @@ packed_detail_item = ExtResource("6_fwvdd")
 packed_object_item = ExtResource("8_a550x")
 metadata/_tab_index = 1
 
-[node name="DetaisSeparate" type="VBoxContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details" unique_id=1270110984]
+[node name="DetaisSeparate" type="VBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details" unique_id=1270110984]
 layout_mode = 2
 
-[node name="FormText" type="Label" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1070351666]
+[node name="FormText" type="Label" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1070351666]
 layout_mode = 2
 text = "Form"
 horizontal_alignment = 1
 
-[node name="FormsScroll" type="ScrollContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1176059424]
+[node name="FormsScroll" type="ScrollContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1176059424]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FormPropertys" type="VBoxContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll" unique_id=2142581887]
+[node name="FormPropertys" type="VBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll" unique_id=2142581887]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ObjectListScroll" type="ScrollContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll/FormPropertys" unique_id=936325700]
+[node name="ObjectListScroll" type="ScrollContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll/FormPropertys" unique_id=936325700]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ObjectListSeparate" type="HBoxContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll" unique_id=1546429876]
+[node name="ObjectListSeparate" type="HBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll" unique_id=1546429876]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Add" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll/ObjectListSeparate" unique_id=1606647362 instance=ExtResource("8_a550x")]
+[node name="Add" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/FormsScroll/FormPropertys/ObjectListScroll/ObjectListSeparate" unique_id=1606647362 instance=ExtResource("8_a550x")]
 layout_mode = 2
 text = ""
 icon = ExtResource("3_fat6c")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Form&BoneSeparator" type="HSeparator" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1128953869]
+[node name="Form&BoneSeparator" type="HSeparator" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1128953869]
 custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 
-[node name="BoneText" type="Label" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1550714908]
+[node name="BoneText" type="Label" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=1550714908]
 layout_mode = 2
 text = "Bone"
 horizontal_alignment = 1
 
-[node name="BonesScroll" type="ScrollContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=767206864]
+[node name="BonesScroll" type="ScrollContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate" unique_id=767206864]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BonePropertys" type="VBoxContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll" unique_id=1431003007]
+[node name="BonePropertys" type="VBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll" unique_id=1431003007]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ObjectListScroll" type="ScrollContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll/BonePropertys" unique_id=1815753467]
+[node name="ObjectListScroll" type="ScrollContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll/BonePropertys" unique_id=1815753467]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="ObjectListSeparate" type="HBoxContainer" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll/BonePropertys/ObjectListScroll" unique_id=749952662]
+[node name="ObjectListSeparate" type="HBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll/BonePropertys/ObjectListScroll" unique_id=749952662]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Add" parent="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll/BonePropertys/ObjectListScroll/ObjectListSeparate" unique_id=2006073217 instance=ExtResource("8_a550x")]
+[node name="Add" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details/DetaisSeparate/BonesScroll/BonePropertys/ObjectListScroll/ObjectListSeparate" unique_id=2006073217 instance=ExtResource("8_a550x")]
 layout_mode = 2
 text = ""
 icon = ExtResource("3_fat6c")
 icon_alignment = 1
 expand_icon = true
 
-[connection signal="object_selected" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects" to="." method="selected_draw_object"]
-[connection signal="pressed" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects/ObjectContainer/Add" to="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Objects" method="_on_add_pressed"]
-[connection signal="create_drawer" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="create_drawer"]
-[connection signal="property_atualize" from="CenterUI/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="property_atualize"]
+[node name="Tree" type="Tree" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin" unique_id=1675344338]
+layout_mode = 2
+columns = 3
+
+[node name="MarginFFMPEG" type="MarginContainer" parent="." unique_id=931618620]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Video" type="Control" parent="MarginFFMPEG" unique_id=1154516030]
+layout_mode = 2
+script = ExtResource("11_5igdx")
+metadata/_custom_type_script = "uid://bioplfo5ytpcu"
+
+[node name="Panel" type="Panel" parent="MarginFFMPEG/Video" unique_id=439963012]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="MarginFFMPEG/Video/Panel" unique_id=1760138493]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginFFMPEG/Video/Panel/Margin" unique_id=1581206210]
+layout_mode = 2
+
+[connection signal="object_selected" from="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Objects" to="." method="selected_draw_object"]
+[connection signal="pressed" from="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Objects/ScrollObjects/ObjectContainer/Add" to="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Objects" method="_on_add_pressed"]
+[connection signal="create_drawer" from="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="create_drawer"]
+[connection signal="property_atualize" from="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options/Details" to="." method="property_atualize"]

@@ -42,7 +42,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("save"):
 		if project and project_manager:
 			project.set_objects_in_form(world.form)
-			ProjectManager.save_project_manager(project_manager)
+			ProjectManager.save_projects(project_manager.project_list)
 	if event.is_action_pressed("exit"):
 		Log.register_log(get_tree().change_scene_to_file(MAIN_STRING_PATH))
 

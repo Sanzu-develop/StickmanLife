@@ -13,7 +13,7 @@ MarginContainer/constants/margin_top = 8
 [sub_resource type="LabelSettings" id="LabelSettings_xrivr"]
 font_size = 20
 
-[node name="ProjectButton" type="Button" unique_id=1167628728 node_paths=PackedStringArray("text_label", "texture_rect")]
+[node name="ProjectButton" type="Button" unique_id=1167628728 node_paths=PackedStringArray("text_label", "texture_rect", "star_button")]
 custom_minimum_size = Vector2(384, 288)
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,6 +31,7 @@ theme = SubResource("Theme_j6gsl")
 script = ExtResource("1_j6gsl")
 text_label = NodePath("MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/Label")
 texture_rect = NodePath("MarginContainer/VBoxContainer/Image")
+star_button = NodePath("MarginContainer/Star/Star")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1537065412]
 layout_mode = 1
@@ -39,9 +40,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1244333083]
-layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1083836070]
 layout_mode = 2
@@ -77,5 +75,20 @@ text = "Animation"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1297318447]
 layout_mode = 2
-text = "Editado há 0 min"
+text = "Editado há 0 min - 60 FPS"
 label_settings = SubResource("LabelSettings_xrivr")
+
+[node name="Star" type="Control" parent="MarginContainer" unique_id=396782957]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Star" type="CheckBox" parent="MarginContainer/Star" unique_id=521872229]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_bottom = 24.0
+grow_horizontal = 0
+
+[connection signal="pressed" from="MarginContainer/Star/Star" to="." method="_on_star_pressed"]
