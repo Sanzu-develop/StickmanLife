@@ -11,6 +11,25 @@ static var extension_text: String = ".proj"
 
 
 
+func _init() -> void:
+	var saver = ProjFormatSaver.new()
+	var loader = ProjFormatLoader.new()
+	ResourceSaver.add_resource_format_saver(saver)
+	ResourceLoader.add_resource_format_loader(loader)
+
+func get_project_list() -> Array[Project]:
+	return project_list
+
+func create_project(project_name: String) -> bool:
+	var new_project = Project.new()
+	
+	new_project.name = project_name
+	
+	project_list.push_back(new_project)
+	save_projects(project_list)
+	return true
+
+
 static func has_project() -> bool:
 	return project != null
 
@@ -73,16 +92,3 @@ static func load_projects(path: String = local_save) -> Array[Project]:
 	#
 	#Log.register_log("Não encontrado gerenciador de projetos, Criando uma nova...", true)
 	#return ProjectManager.new()
-
-
-func get_project_list() -> Array[Project]:
-	return project_list
-
-func create_project(project_name: String) -> bool:
-	var new_project = Project.new()
-	
-	new_project.name = project_name
-	
-	project_list.push_back(new_project)
-	save_projects(project_list)
-	return true

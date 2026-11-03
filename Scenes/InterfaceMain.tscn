@@ -26,10 +26,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_40qqc")
 script = ExtResource("1_oj7b5")
-projects_parent = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects")
 project_button_packed = ExtResource("1_y0wa7")
-projects_windows_button = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons/Projects")
 packed_editor = ExtResource("3_mpnxc")
+projects_parent = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects")
+projects_windows_button = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons/Projects")
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=936009555]
 layout_mode = 1
