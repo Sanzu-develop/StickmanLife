@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://ct38kv71pmihy" path="res://Scenes/UIScenesItens/item_button.tscn" id="8_a550x"]
 [ext_resource type="Script" uid="uid://bioplfo5ytpcu" path="res://addons/ffmpeg/ffmpeg_manager.gd" id="11_5igdx"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_xwj7y"]
+font_size = 24
+
 [sub_resource type="Theme" id="Theme_fat6c"]
 MarginContainer/constants/margin_bottom = 32
 MarginContainer/constants/margin_left = 32
@@ -138,6 +141,9 @@ grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 3
 text = "FPS: 60 | Memory: 142MB"
+label_settings = SubResource("LabelSettings_xwj7y")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CenterDivision" type="HBoxContainer" parent="MarginInterface/InterfaceSeparator" unique_id=1903850326]
 unique_name_in_owner = true
@@ -190,7 +196,7 @@ custom_maximum_size = Vector2(576, -1)
 layout_mode = 2
 theme = SubResource("Theme_fat6c")
 script = ExtResource("7_akntn")
-tree = NodePath("Margin/Tree")
+tree = NodePath("Margin/List/Options/Tree")
 
 [node name="Margin" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel" unique_id=1363215949]
 layout_mode = 1
@@ -205,13 +211,12 @@ theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
 [node name="List" type="VBoxContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin" unique_id=743195367]
-visible = false
 layout_mode = 2
 
 [node name="Options" type="TabContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List" unique_id=935045929]
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 2
 
 [node name="Objects" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options" unique_id=1407822021 node_paths=PackedStringArray("manager", "object_container")]
 visible = false
@@ -238,6 +243,7 @@ icon = ExtResource("3_fat6c")
 expand_icon = true
 
 [node name="Details" type="MarginContainer" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options" unique_id=1473817777 node_paths=PackedStringArray("manager", "form_item_parent", "form_item_add", "bone_item_parent", "bone_item_add", "form_object_parent", "bone_object_parent")]
+visible = false
 layout_mode = 2
 script = ExtResource("6_v847o")
 manager = NodePath("../../../../../../../..")
@@ -318,9 +324,11 @@ icon = ExtResource("3_fat6c")
 icon_alignment = 1
 expand_icon = true
 
-[node name="Tree" type="Tree" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin" unique_id=1675344338]
+[node name="Tree" type="Tree" parent="MarginInterface/InterfaceSeparator/CenterDivision/RightPanel/Margin/List/Options" unique_id=1675344338]
 layout_mode = 2
 columns = 3
+hide_root = true
+metadata/_tab_index = 2
 
 [node name="MarginFFMPEG" type="MarginContainer" parent="." unique_id=931618620]
 visible = false

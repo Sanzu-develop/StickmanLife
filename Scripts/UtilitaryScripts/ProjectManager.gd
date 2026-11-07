@@ -45,7 +45,7 @@ static func get_project() -> Project:
 	return project
 
 
-static func recursive_path(path: String) -> bool:
+static func force_path(path: String) -> bool:
 	if not DirAccess.dir_exists_absolute(path):
 		DirAccess.make_dir_recursive_absolute(path)
 		return false
@@ -54,7 +54,7 @@ static func recursive_path(path: String) -> bool:
 static func save_projects(save_project_list: Array[Project], path: String = local_save) -> void:
 	if save_project_list.is_empty(): return
 	
-	recursive_path(path)
+	force_path(path) # Force path if does not exist
 	
 	for current_project in save_project_list:
 		var path_save = path.path_join(str(current_project.name + extension_text))

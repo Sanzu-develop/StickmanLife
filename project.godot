@@ -36,6 +36,13 @@ exit={
 ]
 }
 
+[internationalization]
+
+locale/translation_remaps={}
+locale/translations=PackedStringArray("res://Accessibility/translations.en.translation", "res://Accessibility/translations.pt.translation")
+locale/test="pt"
+locale/country_filter=["BR"]
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

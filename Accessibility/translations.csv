@@ -1,0 +1,14 @@
+keys,en,pt
+VERSION,Version : 1.0.0 alpha,Versão : 1.0.0 alpha
+NAME_MAIN,Stickman Life -- Hub of Projects,Stickman Life -- Hub de Projetos
+UI_TOP_CREATE_PROJECT_MAIN, + New Project , + Novo Projeto 
+UI_TOP_IMPORT_PROJECT_MAIN, Import (.proj) , Importar (.proj) 
+UI_LEFT_LABEL_MAIN,Navigation,Navegação
+UI_LEFT_PROJECTS_BUTTON_MAIN,My Projects (%d),Meus Projetos (%d)
+UI_LEFT_STARS_BUTTON_MAIN,Favorite (%d),Favoritos (%d)
+UI_LEFT_TEMPLATES_BUTTON_MAIN,Templates,Modelos
+UI_LEFT_CONFIGURATE_BUTTON_MAIN,Settings,Configurações
+UI_BOARD_SEARCH_BUTTON_MAIN,🔍 Search Project or Tag...,🔍 Buscar Projeto ou Tag...
+UI_BOARD_SORT_BUTTON_MAIN,Sort by: ,Ordenar por: 
+UI_BOARD_SORT_OPTIONS_1_MAIN, Last Modified, Última Modificação
+UI_BOARD_PROJECTS_DESCRIPTION_MAIN,Edited %d min ago- %d FPS,Editado há %d min - %d FPS

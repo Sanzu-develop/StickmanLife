@@ -17,7 +17,7 @@ corner_radius_top_right = 24
 corner_radius_bottom_right = 24
 corner_radius_bottom_left = 24
 
-[node name="InterfaceMain" type="Control" unique_id=1131785745 node_paths=PackedStringArray("projects_parent", "projects_windows_button")]
+[node name="InterfaceMain" type="Control" unique_id=1131785745 node_paths=PackedStringArray("projects_parent", "projects_windows_button", "stars_windows_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,10 +26,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_40qqc")
 script = ExtResource("1_oj7b5")
+projects_parent = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer/GridProjects")
 project_button_packed = ExtResource("1_y0wa7")
-packed_editor = ExtResource("3_mpnxc")
-projects_parent = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects")
 projects_windows_button = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons/Projects")
+stars_windows_button = NodePath("InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons/Star")
+packed_editor = ExtResource("3_mpnxc")
 
 [node name="BackGround" type="ColorRect" parent="." unique_id=936009555]
 layout_mode = 1
@@ -81,7 +82,7 @@ stretch_mode = 4
 
 [node name="NameApp" type="Label" parent="InterfaceMargin/InterfaceSeparator/TopPanel/MarginTop/TopSeparate/IconSeparator" unique_id=1374234153]
 layout_mode = 2
-text = "Stickman Life -- Hub de Projetos"
+text = "NAME_MAIN"
 horizontal_alignment = 1
 
 [node name="ButtonsTop" type="HBoxContainer" parent="InterfaceMargin/InterfaceSeparator/TopPanel/MarginTop/TopSeparate" unique_id=1637744368]
@@ -91,11 +92,11 @@ alignment = 2
 
 [node name="Create" type="Button" parent="InterfaceMargin/InterfaceSeparator/TopPanel/MarginTop/TopSeparate/ButtonsTop" unique_id=1606070620]
 layout_mode = 2
-text = " + Novo Projeto "
+text = "UI_TOP_CREATE_PROJECT_MAIN"
 
 [node name="Import" type="Button" parent="InterfaceMargin/InterfaceSeparator/TopPanel/MarginTop/TopSeparate/ButtonsTop" unique_id=456529295]
 layout_mode = 2
-text = " Importar (.proj) "
+text = "UI_TOP_IMPORT_PROJECT_MAIN"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InterfaceMargin/InterfaceSeparator" unique_id=1005071390]
 layout_mode = 2
@@ -124,33 +125,33 @@ theme_override_constants/separation = 24
 
 [node name="Label" type="Label" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons" unique_id=292406059]
 layout_mode = 2
-text = "Navegação"
+text = "UI_LEFT_LABEL_MAIN"
 
 [node name="Projects" type="Button" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons" unique_id=2030804931]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-text = "Meus Projetos (0)"
+text = "UI_LEFT_PROJECTS_BUTTON_MAIN"
 icon = ExtResource("6_iu3q8")
 expand_icon = true
 
 [node name="Star" type="Button" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons" unique_id=177133669]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-text = "Favoritos (0)"
+text = "UI_LEFT_STARS_BUTTON_MAIN"
 icon = ExtResource("7_pk3kk")
 expand_icon = true
 
 [node name="Templates" type="Button" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons" unique_id=675417365]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-text = "Templates"
+text = "UI_LEFT_TEMPLATES_BUTTON_MAIN"
 icon = ExtResource("8_u5g1t")
 expand_icon = true
 
 [node name="Projects4" type="Button" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/OptionButtons" unique_id=1141984720]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-text = "Configurações"
+text = "UI_LEFT_CONFIGURATE_BUTTON_MAIN"
 icon = ExtResource("9_5802s")
 expand_icon = true
 
@@ -169,70 +170,70 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Options/MarginContainer/Options/EngineInformations/MarginContainer" unique_id=729433391]
 layout_mode = 2
-text = "Versão : 1.0.0 alpha"
+text = "VERSION"
 
-[node name="Quadro" type="VBoxContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer" unique_id=1175289522]
+[node name="Board" type="VBoxContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer" unique_id=1175289522]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SupOptions" type="HBoxContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro" unique_id=694908528]
+[node name="SupOptions" type="HBoxContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board" unique_id=694908528]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/SupOptions" unique_id=969638735]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "🔍 Buscar Projeto ou Tag..."
-
-[node name="PanelContainer" type="PanelContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/SupOptions" unique_id=323059460]
+[node name="LineEdit" type="LineEdit" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/SupOptions" unique_id=969638735]
 layout_mode = 2
 size_flags_horizontal = 3
+placeholder_text = "UI_BOARD_SEARCH_BUTTON_MAIN"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/SupOptions/PanelContainer" unique_id=1453571206]
+[node name="PanelContainer" type="PanelContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/SupOptions" unique_id=323059460]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/SupOptions/PanelContainer" unique_id=1453571206]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/SupOptions/PanelContainer/HBoxContainer" unique_id=1072098108]
+[node name="Order" type="Label" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/SupOptions/PanelContainer/HBoxContainer" unique_id=1072098108]
 layout_mode = 2
-text = "Ordenar por: "
+text = "UI_BOARD_SORT_BUTTON_MAIN"
 
-[node name="OptionButton" type="OptionButton" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/SupOptions/PanelContainer/HBoxContainer" unique_id=1102328012]
+[node name="OptionOrder" type="OptionButton" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/SupOptions/PanelContainer/HBoxContainer" unique_id=1102328012]
 layout_mode = 2
 selected = 0
 item_count = 1
-popup/item_0/text = " Última Modificação"
+popup/item_0/text = "UI_BOARD_SORT_OPTIONS_1_MAIN"
 popup/item_0/id = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro" unique_id=940768959]
+[node name="MarginContainer" type="MarginContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board" unique_id=940768959]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer" unique_id=1614735945]
+[node name="ScrollContainer" type="ScrollContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer" unique_id=1614735945]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GridProjects" type="GridContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer" unique_id=668551149]
+[node name="GridProjects" type="GridContainer" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer" unique_id=668551149]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 offset_transform_position = Vector2(46, 0)
 columns = 3
 
-[node name="ProjectButton" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects" unique_id=1167628728 instance=ExtResource("1_y0wa7")]
+[node name="ProjectButton" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer/GridProjects" unique_id=1167628728 instance=ExtResource("1_y0wa7")]
 layout_mode = 2
 
-[node name="ProjectButton2" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects" unique_id=1911345335 instance=ExtResource("1_y0wa7")]
+[node name="ProjectButton2" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer/GridProjects" unique_id=1911345335 instance=ExtResource("1_y0wa7")]
 layout_mode = 2
 
-[node name="ProjectButton3" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects" unique_id=855683263 instance=ExtResource("1_y0wa7")]
+[node name="ProjectButton3" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer/GridProjects" unique_id=855683263 instance=ExtResource("1_y0wa7")]
 layout_mode = 2
 
-[node name="ProjectButton4" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects" unique_id=1749587693 instance=ExtResource("1_y0wa7")]
+[node name="ProjectButton4" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer/GridProjects" unique_id=1749587693 instance=ExtResource("1_y0wa7")]
 layout_mode = 2
 
-[node name="ProjectButton5" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects" unique_id=1691344454 instance=ExtResource("1_y0wa7")]
+[node name="ProjectButton5" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer/GridProjects" unique_id=1691344454 instance=ExtResource("1_y0wa7")]
 layout_mode = 2
 
-[node name="ProjectButton6" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Quadro/MarginContainer/ScrollContainer/GridProjects" unique_id=1701794221 instance=ExtResource("1_y0wa7")]
+[node name="ProjectButton6" parent="InterfaceMargin/InterfaceSeparator/HBoxContainer/Board/MarginContainer/ScrollContainer/GridProjects" unique_id=1701794221 instance=ExtResource("1_y0wa7")]
 layout_mode = 2
 
 [node name="InterfaceCreate" type="MarginContainer" parent="." unique_id=1886553338]

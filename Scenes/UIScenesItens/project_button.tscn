@@ -29,7 +29,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_j6gsl")
 script = ExtResource("1_j6gsl")
-text_label = NodePath("MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/Label")
+text_label = NodePath("MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/NameProject")
 texture_rect = NodePath("MarginContainer/VBoxContainer/Image")
 star_button = NodePath("MarginContainer/Star/Star")
 
@@ -68,14 +68,14 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1281023283]
+[node name="NameProject" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1281023283]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Animation"
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1297318447]
+[node name="Informations" type="Label" parent="MarginContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer" unique_id=1297318447]
 layout_mode = 2
-text = "Editado há 0 min - 60 FPS"
+text = "UI_BOARD_PROJECTS_DESCRIPTION_MAIN"
 label_settings = SubResource("LabelSettings_xrivr")
 
 [node name="Star" type="Control" parent="MarginContainer" unique_id=396782957]

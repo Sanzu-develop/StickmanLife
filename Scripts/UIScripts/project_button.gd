@@ -11,6 +11,9 @@ signal star_click(is_star: bool)
 var star: bool =false
 
 
+func atualize_with_project(project: Project):
+	pass
+
 func rename(new_name: String) -> void:
 	text_label.text = new_name
 

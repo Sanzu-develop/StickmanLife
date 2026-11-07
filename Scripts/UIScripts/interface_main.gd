@@ -7,9 +7,10 @@ extends Control
 @export var project_button_packed: PackedScene
 
 @export var projects_windows_button: Button
-var projects_button_text: String = "Meus Projetos (%s)"
+@export var stars_windows_button: Button
 
 @export var packed_editor: PackedScene
+@export var translate_list_sort: Array[String] = [""]
 
 var project_manager: ProjectManager
 
@@ -27,7 +28,9 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_ENTER:
 			open_editor()
 
+
 #========================================
+
 
 func atualize_project_list():
 	_atualize_project_button()
@@ -38,7 +41,7 @@ func _atualize_project_button():
 	
 	var count_buttons = projects.size()
 	
-	projects_windows_button.text = projects_button_text % count_buttons
+	_atualize_buttons_name(count_buttons,count_buttons)
 	
 	ChildManager.organize_childs(projects_parent, count_buttons, project_button_packed)
 	
@@ -58,7 +61,24 @@ func _atualize_project_button():
 			if not project_button.pressed.is_connected(_on_selected_project.bind(project_id)):
 				project_button.pressed.connect(_on_selected_project.bind(project_id))
 
+func _atualize_buttons_name(count_projects: int, count_stars: int):
+	# Lista Modular de Atualização
+	var buttons_update : Array[Button] = [projects_windows_button,stars_windows_button]
+	var values_update: Array[int] = [count_projects, count_stars]
+	var keys : Array[String] = ["UI_LEFT_PROJECTS_BUTTON_MAIN","UI_LEFT_STARS_BUTTON_MAIN"]
+	
+	# Atualização Modular
+	for i in range(buttons_update.size()):
+		var button = buttons_update[i]
+		var key = keys[i]
+		var value = values_update[i]
+		
+		if button:
+			button.text = tr(key) % value
+
+
 #========================================
+
 
 func open_editor():
 	if not ProjectManager.has_project(): return
@@ -84,7 +104,9 @@ func show_projects(star: bool = false):
 			if i is ProjectButton:
 				i.visible = true
 
+
 #========================================
+
 
 func _on_selected_project(id: int):
 	var projects = project_manager.get_project_list()
